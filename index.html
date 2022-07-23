@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>HaiZuka - Gold Miner Game</title>
+    <title>Gold Miner</title>
     <link rel="stylesheet" href="css/style.css">
-    <meta 
-        name='viewport' 
-        content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' 
-    />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
+
 </head>
-<body></body>
-<script type="text/javascript" src="js/gold.js"></script>
-<script type="text/javascript" src="js/game.js"></script>
+
+<body>
+    <!-- modal -->
+    <div class="modal" id="modal">
+        <div class="modal-header">
+            <p>Hướng dẫn chơi :</p>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="content" id="content"></div>
+        </div>
+    </div>
+    <div id="overlay"></div>
+    <!-- game start -->
+    <div id="brand"><img src="images/imgbin_gold-mining-coal-mining-png.png">
+        <a href="game.html">Start Game</a>
+    </div>
+
+    <footer>
+        <p align="center"><a data-modal-target="#modal" class="btn-twtr" target="_b">Guide</a>
+        </p>
+    </footer>
+
+</body>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="js/controller.js"></script>
+<script src="modal/modalQuizHandle.js"></script>
+
 </html>

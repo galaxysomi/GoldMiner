@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Gold Miner</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
+    <button data-modal-target="#modal" onclick=GetQuest(102)>Test Quizz Render</button>
+</head>
+
+<body>
+
+    <div class="modal" id="modal">
+        <div class="modal-header">
+            <div class="title" id="level"></div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="content" id="content"></div>
+            <form method="POST" class="form-quiz" onSubmit="return checkAnswer(this , 'Quang ');">
+                <INPUT TYPE="RADIO" id="inputA" NAME="key">
+                <p id="keyA"></p>
+                <BR>
+                <INPUT TYPE="RADIO" id="inputB" NAME="key">
+                <p id="keyB"></p>
+                <BR>
+                <INPUT TYPE="RADIO" id="inputC" NAME="key">
+                <p id="keyC"></p>
+                <BR>
+                <INPUT TYPE="RADIO" id="inputD" NAME="key">
+                <p id="keyD"></p>
+                <BR>
+                <INPUT TYPE="submit" VALUE="Submit Answer">
+            </form>
+            <input id="ans" name="ans" style="visibility: hidden">
+        </div>
+    </div>
+    <div id="overlay"></div>
+
+</body>
+<script type="text/javascript" src="js/gold.js"></script>
+<script type="text/javascript" src="js/game.js"></script>
+<script type="text/javascript" src="js/questApi.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="modal/modalQuizHandle.js"></script>
+
+
+</html>

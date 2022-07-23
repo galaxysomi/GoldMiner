@@ -1,10 +1,11 @@
-body{
+body {
     background-color: white;
     margin: 0px;
     text-align: center;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     height: 100%;
     overflow: hidden
@@ -12,8 +13,185 @@ html, body {
 
 html {
     scrollbar-width: none;
-    -ms-overflow-style: none; 
+    -ms-overflow-style: none;
 }
 
-html { overflow-y: hidden; }
+html {
+    overflow-y: hidden;
+}
 
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+.form-quiz {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.modal {
+    background-image: url('https://img.freepik.com/premium-photo/old-paper-texture-vintage-paper-background_262663-426.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 75%;
+    height: 75%;
+    max-width: 80%;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.modal-header .title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.modal-header .close-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.content {
+    padding: 10% 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-body {
+
+    font-size: 2rem;
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+html {
+    height: 100%
+}
+
+.form-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+body {
+    height: 100%;
+    background: url(https://78.media.tumblr.com/ab5d1b5e315a2eca8f7ceecbac7fd622/tumblr_oz2jfje5Jn1u6t6uao1_1280.jpg) center center no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    margin: 0;
+    overflow: hidden
+}
+
+#brand {
+    text-align: center;
+    cursor: pointer;
+}
+
+#brand img {
+    display: block;
+    width: 80vw;
+    max-width: 700px;
+    height: auto;
+    transition: 0.2s
+}
+
+#brand a {
+    display: block;
+    font-family: 'Passion One';
+    font-size: 3em;
+    color: #333;
+    font-weight: 800;
+    text-decoration: none;
+    background: rgba(0, 0, 40, 0);
+    padding: 5px 15px;
+    transition: 0.4s
+}
+
+#brand:hover a {
+    color: rgba(200, 80, 50, 1);
+    text-shadow: 2px 5px 0 rgba(0, 0, 0, 0.6)
+}
+
+
+
+
+/* follow me @nodws */
+.btn-twtr {
+    color: #ddd;
+    border: 2px solid;
+    border-radius: 3px;
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 10px;
+    font-family: sans-serif;
+    font-weight: 600;
+    margin-top: 80vh;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0px 3px rgba(0, 0, 0, 0.2);
+    opacity: 0.8;
+    position: absolute;
+    bottom: 20px;
+    right: 20px
+}
+
+.btn-twtr:hover {
+    color: #fff;
+}
+
+.btn-twtr:after {
+    content: "\1F426";
+    padding-left: 5px
+}

@@ -16,17 +16,17 @@ tager = 0;
 timeH = 0;
 vlH = 0;
 var bg = new Image();
-bg.src="images/background.png";
+bg.src = "images/background.png";
 var hook = new Image();
-hook.src="images/hook.png";
+hook.src = "images/hook.png";
 var targetIM = new Image();
-targetIM.src="images/target.png";
+targetIM.src = "images/target.png";
 var dolarIM = new Image();
-dolarIM.src="images/dolar.png";
+dolarIM.src = "images/dolar.png";
 var levelIM = new Image();
-levelIM.src="images/level.png";
+levelIM.src = "images/level.png";
 var clockIM = new Image();
-clockIM.src="images/clock.png";
+clockIM.src = "images/clock.png";
 
 
 let N = -10;
@@ -62,7 +62,7 @@ class game {
         timeH = -1;
         vlH = 0;
         time = 60;
-        level ++;
+        level++;
         tager = (level + 1) * 1000 + level * level * 120;
         this.initGold();
     }
@@ -94,14 +94,14 @@ class game {
         if (time > 0 || this.score > tager)
             setTimeout(() => this.loop(), 10);
         if (time <= 0 || this.checkWin()) {
-            if (this.score >= tager || this.checkWin()) 
+            if (this.score >= tager || this.checkWin())
                 this.newGold();
             else {
                 window.alert("You lose!" + "\n" + "Your Score: " + this.score);
                 location.reload();
             }
         }
-            
+
     }
 
     update() {
@@ -126,12 +126,12 @@ class game {
                 ok = false;
                 index = -1;
                 for (let i = 0; i < N; i++)
-                if (this.gg[i].alive && this.range(Xh, Yh, this.gg[i].x, this.gg[i].y) <= 2 * this.getWidth()) {
-                    this.gg[i].alive = false;
-                    this.score += this.gg[i].score;
-                    timeH = time - 0.7;
-                    vlH = this.gg[i].score;
-                }
+                    if (this.gg[i].alive && this.range(Xh, Yh, this.gg[i].x, this.gg[i].y) <= 2 * this.getWidth()) {
+                        this.gg[i].alive = false;
+                        this.score += this.gg[i].score;
+                        timeH = time - 0.7;
+                        vlH = this.gg[i].score;
+                    }
             }
         }
         if (drag && index == -1) {
@@ -175,7 +175,7 @@ class game {
             }
 
         this.context.beginPath();
-        this.context.strokeStyle  = "#FF0000";
+        this.context.strokeStyle = "#FF0000";
         this.context.lineWidth = Math.floor(this.getWidth() / 10);
         this.context.moveTo(XXX, YYY);
         this.context.lineTo(Xh, Yh);
@@ -188,7 +188,7 @@ class game {
         this.context.save();
         this.context.translate(Xh, Yh);
         this.context.rotate(this.toRadian(angle - 90));
-        this.context.drawImage(hook, - this.getWidth() / 4,- this.getWidth() / 8, this.getWidth() / 2, this.getWidth() / 2);
+        this.context.drawImage(hook, - this.getWidth() / 4, - this.getWidth() / 8, this.getWidth() / 2, this.getWidth() / 2);
         this.context.restore();
 
         this.drawText();
@@ -249,7 +249,7 @@ class game {
                         this.gg[j].randomXY();
                     }
             if (check)
-                    break;
+                break;
         }
     }
 
