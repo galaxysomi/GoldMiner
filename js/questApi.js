@@ -3,7 +3,7 @@ let Quiz = []
 async function GetQuest(questId) {
     let data = await axios.get('https://62d91b195d893b27b2de482c.mockapi.io/questions/' + questId)
     Quiz = data.data
-    console.log(Quiz)
+    console.log(Quiz.content)
     renderQuest()
 }
 
@@ -65,6 +65,8 @@ function checkAnswer(quizForm,
     //
     if (s == theAnswer) {
         alert("'" + s + "' is correct!");
+        modalObject.style.display = "none";
+        removeOptions(document.getElementsByClassName('form-quiz'));
         if (urlRight) {
             document.location.href = urlRight;
         }
@@ -75,8 +77,6 @@ function checkAnswer(quizForm,
             document.location.href = urlWrong;
         }
     }
-    console.log(s)
-    console.log(theAnswer)
     // return "false" to indicate not to
     // submit the form.
     // change this to "true" if the form
@@ -85,4 +85,11 @@ function checkAnswer(quizForm,
     //
     return false;
 }
+function removeOptions(selectElement) {
+    var i, L = selectElement.options.length - 1;
+    for (i = L; i >= 0; i--) {
+        selectElement.remove(i);
+    }
+}
 
+GetQuest(102);

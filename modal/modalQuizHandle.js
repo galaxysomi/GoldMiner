@@ -35,3 +35,15 @@ function closeModal(modal) {
     modal.classList.remove('active')
     overlay.classList.remove('active')
 }
+
+var modalObject = document.getElementById("myModal");
+var closeObject = document.getElementsByClassName("close")[0];
+console.log(modalObject);
+modalObject.style.display = "block";
+
+closeObject.onclick = function () {
+    modalObject.style.display = "none";
+    console.log(closeObject)
+}
+
+console.log(closeObject)

@@ -128,9 +128,11 @@ class game {
                 for (let i = 0; i < N; i++)
                     if (this.gg[i].alive && this.range(Xh, Yh, this.gg[i].x, this.gg[i].y) <= 2 * this.getWidth()) {
                         this.gg[i].alive = false;
-                        this.score += this.gg[i].score;
+                        // this.score += this.gg[i].score;
                         timeH = time - 0.7;
                         vlH = this.gg[i].score;
+                        getRandomQuest();
+                        modalObject.style.display = "block";
                     }
             }
         }
@@ -265,6 +267,12 @@ class game {
     range(x1, y1, x2, y2) {
         return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
     }
+}
+var modalObject = document.getElementById("myModal");
+var closeObject = document.getElementsByClassName("close")[0];
+closeObject.onclick = function () {
+    modalObject.style.display = "none";
+    console.log(closeObject)
 }
 
 new game();
