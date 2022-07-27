@@ -10,23 +10,95 @@
 
 <body>
     <!-- modal -->
-    <div class="modal" id="modal">
+    <div class="modal" id="myModal">
         <div class="modal-header">
-            <p>Hướng dẫn chơi :</p>
+            <p>Admin Controller</p>
             <button data-close-button class="close-button">&times;</button>
         </div>
         <div class="modal-body">
-            <div class="content" id="content"></div>
+            <a data-modal-target="#myModal2" class="btn-twtr" target="_b">Add</a>
+            <table class="table table-bordered">
+                <colgroup>
+                    <col width="40" span="1">
+                    <col width="200" span="1">
+                    <col width="500" span="1">
+                    <col width="200" span="1">
+                    <col width="200" span="1">
+                    <col width="200" span="1">
+                    <col width="200" span="1">
+                    <col width="200" span="1">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th> Id </th>
+                        <th> Level</th>
+                        <th> Content </th>
+                        <th> KeyA</th>
+                        <th> KeyB </th>
+                        <th> KeyC </th>
+                        <th> KeyD </th>
+                        <th> Key </th>
+                        <th> Control </th>
+                    </tr>
+                </thead>
+                <tbody id="information">
+
+                </tbody>
+            </table>
         </div>
     </div>
     <div id="overlay"></div>
+    <!-- modal add -->
+    <div class="modal" id="myModal2" data-bs-backdrop="static">
+        <div class="modal-header">
+            <p>Add Questions</p>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="form-add">
+                <div class="form-group">
+                    <label for="level">Level</label>
+                    <input type="text" class="form-control" id="addLevel" name="" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="content">Content</label>
+                    <input type="text" class="form-control" id="addContent" name="" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="keyA">KeyA</label>
+                    <input type="text" class="form-control" id="addKeyA" name="" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="keyB">KeyB</label>
+                    <input type="text" class="form-control" id="addKeyB" name="" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="keyC">KeyC</label>
+                    <input type="text" class="form-control" id="addKeyC" name="" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="keyD">KeyD</label>
+                    <input type="text" class="form-control" id="addKeyD" name="" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="key">Key</label>
+                    <input type="text" class="form-control" id="addKey" name="" placeholder="">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" onclick="addQuiz()" class="btn btn-primary">Add Quest</button>
+        </div>
+    </div>
+
+
     <!-- game start -->
     <div id="brand"><img src="images/imgbin_gold-mining-coal-mining-png.png">
         <a href="game.html">Start Game</a>
     </div>
 
     <footer>
-        <p align="center"><a data-modal-target="#modal" class="btn-twtr" target="_b">Guide</a>
+        <p align="center"><a data-modal-target="#myModal" class="btn-twtr" target="_b">Admin Controller</a>
         </p>
     </footer>
 
@@ -44,5 +116,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+<script src="js/findQuest.js"></script>
 
 </html>

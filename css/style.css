@@ -49,9 +49,9 @@ html {
     border-radius: 10px;
     z-index: 10;
     background-color: white;
-    width: 75%;
+    /* width: 75%;
     height: 75%;
-    max-width: 80%;
+    max-width: 80%; */
 }
 
 .modal.active {
@@ -90,6 +90,8 @@ html {
 .modal-body {
 
     font-size: 2rem;
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
 }
 
 #overlay {
@@ -194,4 +196,12 @@ body {
 .btn-twtr:after {
     content: "\1F426";
     padding-left: 5px
+}
+
+.modal:nth-of-type(even) {
+    z-index: 1062 !important;
+}
+
+.modal-backdrop.show:nth-of-type(even) {
+    z-index: 1061 !important;
 }

@@ -1,14 +1,59 @@
 
+let QuizObject = []
 let Quiz = []
-async function GetQuest(questId) {
-    let data = await axios.get('https://62d91b195d893b27b2de482c.mockapi.io/questions/' + questId)
-    Quiz = data.data
+async function GetQuestLevel1() {
+    let data = await axios.get('https://62d91b195d893b27b2de482c.mockapi.io/questions')
+    QuizLevel1 = data.data
+    $(QuizLevel1).filter(
+        function (i, v) {
+            if (v.level == 1) {
+                QuizObject.push(v)
+            }
+        }
+    )
+    getRandomQuest()
+    console.log(QuizObject)
+    console.log(Quiz)
     renderQuest()
+    QuizObject = []
+}
+async function GetQuestLevel2() {
+    let data = await axios.get('https://62d91b195d893b27b2de482c.mockapi.io/questions')
+    QuizLevel1 = data.data
+    $(QuizLevel1).filter(
+        function (i, v) {
+            if (v.level == 2) {
+                QuizObject.push(v)
+            }
+        }
+    )
+    getRandomQuest()
+    console.log(QuizObject)
+    console.log(Quiz)
+    renderQuest()
+    QuizObject = []
+}
+async function GetQuestLevel3() {
+    let data = await axios.get('https://62d91b195d893b27b2de482c.mockapi.io/questions')
+    QuizLevel1 = data.data
+    $(QuizLevel1).filter(
+        function (i, v) {
+            if (v.level == 3) {
+                QuizObject.push(v)
+            }
+        }
+    )
+    getRandomQuest()
+    console.log(QuizObject)
+    console.log(Quiz)
+    renderQuest()
+    QuizObject = []
 }
 
+
 function getRandomQuest() {
-    let randomQuest = Math.floor(Math.random() * 100 + 1)
-    GetQuest(randomQuest)
+    let randomQuest = Math.floor(Math.random() * QuizObject.length)
+    Quiz = QuizObject[randomQuest]
 }
 
 function renderQuest() {
@@ -33,62 +78,8 @@ function renderQuest() {
     document.getElementById('inputC').value = questOption3
     document.getElementById('inputD').value = questOption4
 
-    document.getElementById('ans').value = "Quang "
+    document.getElementById('ans').value = Quiz.ans
 }
 
 
-function checkAnswer(quizForm,
-    theAnswer) {
-    var s = "?";
 
-    // go through the "current choices"
-    // to find the selected choice.
-    // radio boxes pointing to choices
-    // must be named "cc"
-    // change if necessary
-    //
-    var i = 0;
-    for (; i < quizForm.elements.length; i++) {
-        if (("key" ==
-            quizForm.elements[i].name) &&
-            (quizForm.elements[i].checked)) {
-            s = quizForm.elements[i].value;
-        }
-    }
-    // no choice was selected
-    //
-    if ("?" == s) {
-        alert("Please make a selection.");
-        quizForm.preventDefault();
-        return false;
-    }
-
-    // check if we have the correct
-    // choice selected
-    //
-    if (s == theAnswer) {
-
-        modalObject.style.display = "none";
-        alert("'" + s + "' is correct.");
-
-    }
-    else {
-        alert("'" + s + "' is incorrect.");
-        quizForm.preventDefault();
-    }
-    // return "false" to indicate not to
-    // submit the form.
-    // change this to "true" if the form
-    // "action" is valid,
-    // i.e. points to a valid CGI script
-    //
-
-}
-function removeOptions(selectElement) {
-    var i, L = selectElement.options.length - 1;
-    for (i = L; i >= 0; i--) {
-        selectElement.remove(i);
-    }
-}
-
-GetQuest(102);
