@@ -41,9 +41,9 @@ var closeObject = document.getElementsByClassName("close")[0];
 console.log(modalObject);
 modalObject.style.display = "block";
 
-closeObject.onclick = function () {
-    modalObject.style.display = "none";
-    console.log(closeObject)
-}
+// closeObject.onclick = function () {
+//     modalObject.style.display = "none";
+//     console.log(closeObject)
+// }
 
 console.log(closeObject)

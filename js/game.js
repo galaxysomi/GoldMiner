@@ -27,7 +27,7 @@ var levelIM = new Image();
 levelIM.src = "images/level.png";
 var clockIM = new Image();
 clockIM.src = "images/clock.png";
-
+var closeObject = document.getElementsByClassName("close")[0];
 
 let N = -10;
 
@@ -39,6 +39,7 @@ class game {
         this.init();
     }
 
+
     init() {
         this.canvas = document.createElement("canvas");
         this.context = this.canvas.getContext("2d");
@@ -48,7 +49,7 @@ class game {
         this.newGold();
         this.initGold();
         this.loop();
-        this.listenKeyboard();
+        // this.listenKeyboard();
         this.listenMouse();
     }
 
@@ -58,7 +59,7 @@ class game {
         Xh = XXX;
         Yh = YYY;
         r = R;
-        drag = false;
+        // drag = false;
         timeH = -1;
         vlH = 0;
         time = 60;
@@ -80,6 +81,7 @@ class game {
     }
 
     solve() {
+        console.log("Solve : ", drag)
         if (!drag) {
             drag = true;
             d = true;
@@ -122,18 +124,22 @@ class game {
             }
             if (r < R) {
                 r = R;
-                drag = false;
+                // drag = false;
                 ok = false;
                 index = -1;
-                for (let i = 0; i < N; i++)
+                for (let i = 0; i < N; i++) {
                     if (this.gg[i].alive && this.range(Xh, Yh, this.gg[i].x, this.gg[i].y) <= 2 * this.getWidth()) {
                         this.gg[i].alive = false;
-                        // this.score += this.gg[i].score;
+                        console.log(N)
+                        this.score += this.gg[i].score;
                         timeH = time - 0.7;
                         vlH = this.gg[i].score;
-                        getRandomQuest();
+                        GetQuest(102);
                         modalObject.style.display = "block";
+                        console.log(drag)
+                        break;
                     }
+                }
             }
         }
         if (drag && index == -1) {
@@ -272,7 +278,38 @@ var modalObject = document.getElementById("myModal");
 var closeObject = document.getElementsByClassName("close")[0];
 closeObject.onclick = function () {
     modalObject.style.display = "none";
-    console.log(closeObject)
+    drag = false;
+}
+
+function displayRadioValue() {
+    var ele = document.getElementsByName('key');
+    var s = "?";
+    for (i = 0; i < ele.length; i++) {
+        if (ele[i].checked) {
+            document.getElementById("result").innerHTML
+                = "Ans: " + ele[i].value;
+            s = ele[i].value;
+        }
+
+    }
+    if ("?" == s) {
+        alert("Please make a selection.");
+
+        return false;
+    }
+    if (s == document.getElementById('ans').value) {
+
+        modalObject.style.display = "none";
+        alert("'" + s + "' is correct.");
+        drag = false;
+
+    }
+    else {
+        alert("'" + s + "' is incorrect.");
+        modalObject.style.display = "none";
+        drag = false;
+
+    }
 }
 
 new game();
