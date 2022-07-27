@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <!-- <button data-modal-target="#modal" onclick=GetQuest(102)>Test Quizz Render</button> -->
+    <button onclick=continueGame()>Continue</button>
     <div id="myModal" class="modal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -38,7 +38,7 @@
 
                     <br>
 
-                    <button type="button" onclick="displayRadioValue()">
+                    <button type="button" onclick="checkAns()">
                         Submit
                     </button>
 
@@ -69,12 +69,6 @@
     <script type="text/javascript" src="js/gold.js"></script>
     <script type="text/javascript" src="js/game.js"></script>
     <script type="text/javascript" src="js/questApi.js"></script>
-    <script>
-        function clickCloseModalButton() {
-            document.getElementById("myModal").style.display = "none";
-            console.log("Dit me may !!!!!!!")
-        }
-    </script>
 
 </body>
 

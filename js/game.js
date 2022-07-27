@@ -11,10 +11,12 @@ let angle = 90;
 let ChAngle = -1;
 index = -1;
 level = -1;
-time = 60;
+time = 200;
 tager = 0;
 timeH = 0;
 vlH = 0;
+tempScore = 0;
+checkAnswer2 = false; // check if the answer is correct
 var bg = new Image();
 bg.src = "images/background.png";
 var hook = new Image();
@@ -51,6 +53,7 @@ class game {
         this.loop();
         // this.listenKeyboard();
         this.listenMouse();
+
     }
 
     newGold() {
@@ -62,7 +65,7 @@ class game {
         // drag = false;
         timeH = -1;
         vlH = 0;
-        time = 60;
+        time = 200;
         level++;
         tager = (level + 1) * 1000 + level * level * 120;
         this.initGold();
@@ -81,7 +84,6 @@ class game {
     }
 
     solve() {
-        console.log("Solve : ", drag)
         if (!drag) {
             drag = true;
             d = true;
@@ -93,6 +95,7 @@ class game {
     loop() {
         this.update();
         this.draw();
+        this.score = tempScore
         if (time > 0 || this.score > tager)
             setTimeout(() => this.loop(), 10);
         if (time <= 0 || this.checkWin()) {
@@ -130,13 +133,10 @@ class game {
                 for (let i = 0; i < N; i++) {
                     if (this.gg[i].alive && this.range(Xh, Yh, this.gg[i].x, this.gg[i].y) <= 2 * this.getWidth()) {
                         this.gg[i].alive = false;
-                        console.log(N)
-                        this.score += this.gg[i].score;
                         timeH = time - 0.7;
                         vlH = this.gg[i].score;
                         GetQuest(102);
                         modalObject.style.display = "block";
-                        console.log(drag)
                         break;
                     }
                 }
@@ -236,6 +236,41 @@ class game {
         this.context.drawImage(bg, (bg.width - game_W * (bg.height / game_H)) / 2, 0, game_W * (bg.height / game_H), bg.height, 0, 0, game_W, game_H);
     }
 
+    checkAns() {
+        var ele = document.getElementsByName('key');
+        var s = "?";
+        for (i = 0; i < ele.length; i++) {
+            if (ele[i].checked) {
+                document.getElementById("result").innerHTML
+                    = "Ans: " + ele[i].value;
+                s = ele[i].value;
+            }
+
+        }
+        if ("?" == s) {
+            alert("Please make a selection.");
+
+            return false;
+        }
+        if (s == document.getElementById('ans').value) {
+
+            modalObject.style.display = "none";
+            alert("'" + s + "' is correct.");
+            drag = false;
+            tempScore += 10;
+            console.log(tempScore)
+            return true;
+
+        }
+        else {
+            alert("'" + s + "' is incorrect.");
+            modalObject.style.display = "none";
+            drag = false;
+
+        }
+
+    }
+
     checkWin() {
         let check = true;
         for (let i = 0; i < N; i++)
@@ -243,7 +278,6 @@ class game {
                 check = false;
         return check;
     }
-
     initGold() {
         this.gg = [];
         for (let i = 0; i < N; i++)
@@ -281,14 +315,13 @@ closeObject.onclick = function () {
     drag = false;
 }
 
-function displayRadioValue() {
+function checkAns() {
     var ele = document.getElementsByName('key');
     var s = "?";
     for (i = 0; i < ele.length; i++) {
         if (ele[i].checked) {
-            document.getElementById("result").innerHTML
-                = "Ans: " + ele[i].value;
             s = ele[i].value;
+            ele[i].checked = false;
         }
 
     }
@@ -301,7 +334,11 @@ function displayRadioValue() {
 
         modalObject.style.display = "none";
         alert("'" + s + "' is correct.");
+
         drag = false;
+        tempScore += 10;
+        console.log(tempScore);
+        return true;
 
     }
     else {
@@ -310,6 +347,11 @@ function displayRadioValue() {
         drag = false;
 
     }
+
+}
+
+function continueGame() {
+    drag = false;
 }
 
 new game();
