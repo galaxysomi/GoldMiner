@@ -288,10 +288,10 @@ class game {
 }
 var modalObject = document.getElementById("myModal");
 var closeObject = document.getElementsByClassName("close")[0];
-closeObject.onclick = function () {
-    modalObject.style.display = "none";
-    drag = false;
-}
+// closeObject.onclick = function () {
+//     modalObject.style.display = "none";
+//     drag = false;
+// }
 
 function checkAns() {
     var ele = document.getElementsByName('key');
