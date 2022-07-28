@@ -138,7 +138,7 @@ class game {
                         objectScore = this.gg[i].score;
                         tempScore += this.gg[i].score;
                         vlH = this.gg[i].score;
-                        if (this.gg[i].score < 30) {
+                        if (this.gg[i].score <= 30) {
                             GetQuestLevel1()
                             console.log("GetQuestLevel1");
                         }
