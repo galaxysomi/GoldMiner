@@ -9,6 +9,7 @@ let d = false;
 let ok = false;
 let angle = 90;
 let ChAngle = -1;
+let count = 0;
 index = -1;
 level = -1;
 time = 200;
@@ -85,7 +86,8 @@ class game {
     }
 
     solve() {
-        if (!drag) {
+        console.log(count);
+        if (!drag && count == 0) {
             drag = true;
             d = true;
             speedReturn = this.getWidth() / 2;
@@ -96,7 +98,8 @@ class game {
     loop() {
         this.update();
         this.draw();
-        this.score = tempScore
+        this.score = tempScore;
+
         if (time > 0 || this.score > tager)
             setTimeout(() => this.loop(), 10);
         if (time <= 0 || this.checkWin()) {
@@ -128,7 +131,7 @@ class game {
             }
             if (r < R) {
                 r = R;
-                // drag = false;
+                drag = false;
                 ok = false;
                 index = -1;
                 for (let i = 0; i < N; i++) {
@@ -136,7 +139,7 @@ class game {
                         this.gg[i].alive = false;
                         timeH = time - 0.7;
                         objectScore = this.gg[i].score;
-                        tempScore += this.gg[i].score;
+                        //tempScore += this.gg[i].score;
                         vlH = this.gg[i].score;
                         if (this.gg[i].score <= 30) {
                             GetQuestLevel1()
@@ -151,8 +154,10 @@ class game {
                             console.log("GetQuestLevel3");
                         }
                         modalObject.style.display = "block";
-                        break;
+                        //tempScore = calculateScore(i, tempScore);
+                        count = 1;
                     }
+                    
                 }
             }
         }
@@ -305,28 +310,33 @@ function checkAns() {
     }
     if ("?" == s) {
         alert("Please make a selection.");
-
         return false;
     }
     if (s == document.getElementById('ans').value) {
-
         modalObject.style.display = "none";
         alert("'" + s + "' is correct.");
+        count = 0;
+        tempScore += objectScore;
 
-        drag = false;
         return true;
 
     }
     else {
         alert("'" + s + "' is incorrect.");
         modalObject.style.display = "none";
-        tempScore -= objectScore;
-        drag = false;
+        count = 0;
 
     }
     console.log(s);
     console.log(document.getElementById('ans').value);
 
+}
+
+function calculateScore(i, currentScore) {
+    if(checkAns()){
+        return currentScore + this.gg[i].score;
+    }
+    return currentScore;
 }
 
 function continueGame() {
